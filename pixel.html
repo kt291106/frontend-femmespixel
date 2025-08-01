@@ -1,8 +1,66 @@
-<html>
-<title> </title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Loading Animation</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #111;
+      color: #fff;
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    #loader, #success {
+      font-size: 2rem;
+      white-space: nowrap;
+      border-right: 3px solid;
+      width: 0;
+      overflow: hidden;
+      animation: typing 3s steps(30, end) forwards, blink 0.7s step-end infinite;
+    }
+
+    #success {
+      display: none;
+      color: lightgreen;
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    @keyframes blink {
+      from, to { border-color: transparent }
+      50% { border-color: white }
+    }
+  </style>
+</head>
 <body>
-  <form>
-    hey 
-  </form>
+
+  <div id="loader">YOUR PAGE IS LOADING...</div>
+  <div id="success">YOUR PAGE IS SUCCESSFULLY LOADED</div>
+
+  <script>
+    window.addEventListener("load", function() {
+      const loader = document.getElementById("loader");
+      const success = document.getElementById("success");
+
+      // Wait a moment to simulate loading animation finish
+      setTimeout(() => {
+        loader.style.display = "none";
+        success.style.display = "block";
+        success.style.animation = "typing 3s steps(30, end) forwards, blink 0.7s step-end infinite";
+      }, 3000); // Adjust delay as needed
+    });
+  </script>
+
 </body>
 </html>
+
