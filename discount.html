@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Image Hover Effect with Custom Cursor</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background: #f3f3f3;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      cursor: none; /* Hide default cursor */
+    }
+
+    .image-wrapper {
+      position: relative;
+    }
+
+    .hover-img {
+      width: 300px;
+      height: auto;
+      border-radius: 10px;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .hover-img:hover {
+      content: url('assets\headphone1.png'); /* New image on hover */
+    }
+
+    /* Custom circular cursor */
+    .custom-cursor {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      border: 2px solid #000;
+      border-radius: 50%;
+      pointer-events: none;
+      transition: transform 0.1s ease;
+      transform: translate(-50%, -50%);
+      z-index: 9999;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="custom-cursor" id="customCursor"></div>
+
+  <div class="image-wrapper">
+    <img class="hover-img" src="assets\hdphn2.jpg" alt="Preview Image">
+  </div>
+
+  <script>
+    const cursor = document.getElementById('customCursor');
+
+    document.addEventListener('mousemove', e => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+    });
+  </script>
+
+</body>
+</html>

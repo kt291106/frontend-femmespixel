@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Headphone Store</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #ff6e7f, #bfe9ff);
+    }
+
+    .taskbar {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      padding: 12px 20px;
+      background-color: #003366;
+      color: white;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+      z-index: 100;
+    }
+
+    .taskbar nav {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .taskbar nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      padding: 5px;
+    }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #004080;
+      min-width: 220px;
+      z-index: 1000;
+      border-radius: 6px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      margin-top: 5px;
+    }
+
+    .dropdown-content a {
+      color: white;
+      padding: 10px 15px;
+      text-decoration: none;
+      display: block;
+      font-size: 14px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .dropdown-content a:last-child {
+      border-bottom: none;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #0059b3;
+    }
+
+    .hero {
+      background-color: #003366;
+      color: white;
+      padding: 50px 20px;
+      text-align: center;
+    }
+
+    #hoverText {
+      font-size: 2.5rem;
+      color: rgb(255, 254, 254);
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .glow {
+      text-shadow: 0 0 5px #efeaf0,
+                   0 0 10px #efeaf0,
+                   0 0 20px #efeaf0,
+                   0 0 30px #c2bcf0;
+      color: #efeaf0;
+      transform: scale(1.3);
+    }
+
+    .carousel-wrapper {
+      overflow: hidden;
+      white-space: nowrap;
+      padding: 30px 0;
+      background: linear-gradient(to right, #ffdde1, #ee9ca7);
+    }
+
+    .carousel-track {
+      display: inline-block;
+      animation: scroll 20s linear infinite;
+    }
+
+    .product-card {
+      display: inline-block;
+      vertical-align: top;
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      width: 220px;
+      padding: 20px;
+      text-align: center;
+      margin: 0 15px;
+      transition: transform 0.3s;
+    }
+
+    .product-card:hover {
+      transform: scale(1.05);
+    }
+
+    .product-card img {
+      width: 160px;
+      height: 160px;
+      border-radius: 10px;
+      object-fit: cover;
+      display: block;
+      margin: 0 auto 10px auto;
+    }
+
+    .product-card h3 {
+      margin: 10px 0 5px;
+      font-size: 18px;
+    }
+
+    .product-card p {
+      font-size: 14px;
+      color: #444;
+    }
+    .product-card,
+    .product-card:link,
+    .product-card:visited {
+      display: inline-block;
+      vertical-align: top;
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      width: 220px;
+      padding: 20px;
+      text-align: center;
+      margin: 0 15px;
+      transition: transform 0.3s;
+      color: inherit;
+      text-decoration: none;
+    }
+    .product-card:hover {
+      transform: scale(1.05);
+    }
+
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .carousel-wrapper:hover .carousel-track {
+      animation-play-state: paused;
+    }
+
+    footer {
+      background-color: #003366;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="taskbar">
+    <div>🎧 HeadZone</div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Products</a>
+      <div class="dropdown">
+        <a href="#">Support</a>
+        <div class="dropdown-content">
+          <a href="#">Help Desk</a>
+          <a href="#">Call an Agent</a>
+          <a href="#">Chat with an Agent</a>
+          <a href="#">Launch a Request/Complain</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <a href="#">Contact</a>
+        <div class="dropdown-content">
+          <a href="#">📞 +91-9876543210</a>
+          <a href="#">✉ support@headzone.com</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <div class="hero">
+    <h1 id="hoverText" onmouseover="addGlow()" onmouseout="removeGlow()">Feel the Sound</h1>
+    <p>Experience premium audio quality with our latest headphones.</p>
+  </div>
+
+  <!-- Scrolling Carousel -->
+  <div class="carousel-wrapper">
+    <div class="carousel-track">
+      <a href="hdphn1.html" class="product-card">
+        <img src="assets/headphone1.png" alt="Headphone 1">
+        <h3>ProBass X1</h3>
+        <p>Deep bass & clear treble</p>
+      </a>
+      <a href="hdphn1.html" class="product-card">
+        <img src="assets/hdphn2.jpg" alt="Headphone 2">
+        <h3>Studio HD</h3>
+        <p>Built for studio professionals</p>
+      </a>
+      <a href="hdphn1.html" class="product-card">
+        <img src="assets/hdphn3.jpg" alt="Headphone 3">
+        <h3>NoiseBlocker 360</h3>
+        <p>Active noise cancellation</p>
+      </a>
+      <a href="hdphn1.html" class="product-card">
+        <img src="assets/hdphn4.jpg" alt="Headphone 4">
+        <h3>ThunderBeat</h3>
+        <p>Long battery life</p>
+      </a>
+      <a href="hdphn1.html" class="product-card">
+        <img src="assets/hdphn5.jpg" alt="Headphone 5">
+        <h3>BassMaster</h3>
+        <p>Rich bass and clarity</p>
+      </a>
+      <!-- Repeat cards for seamless loop -->
+      <a href="hdphn1.html" class="product-card">
+        <img src="assets/hdph1.jpeg" alt="Headphone 1">
+        <h3>ProBass X1</h3>
+        <p>Deep bass & clear treble</p>
+      </a>
+      <a href="hdphn1.html" class="product-card">
+        <img src="assets/hdphn3.jpg" alt="Headphone 2">
+        <h3>Studio HD</h3>
+        <p>Built for studio professionals</p>
+      </a>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 HeadZone Audio. All rights reserved. | Contact: support@headzone.com
+  </footer>
+
+  <script>
+    function addGlow() {
+      document.getElementById("hoverText").classList.add("glow");
+    }
+
+    function removeGlow() {
+      document.getElementById("hoverText").classList.remove("glow");
+    }
+  </script>
+
+</body>
+</html>

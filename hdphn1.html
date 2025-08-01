@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Rockerz 425W | Product Page</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: #fdfdfd;
+      color: #222;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 40px;
+      max-width: 1200px;
+      margin: auto;
+      gap: 40px;
+    }
+
+    .product-img {
+      flex: 1 1 40%;
+      text-align: center;
+    }
+
+    .product-img img {
+      width: 650px;
+    height:700;
+    position:relative;
+    top:50px;
+      max-width: 400px;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    .product-details {
+      flex: 1 1 50%;
+    }
+
+    .product-details h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    .product-details .tagline {
+      font-style: italic;
+      font-size: 1rem;
+      color: #555;
+    }
+
+    .product-details .features {
+      margin: 15px 0;
+      font-size: 1.1rem;
+    }
+
+    .price {
+      font-size: 1.8rem;
+      color: #e91e63;
+      font-weight: bold;
+    }
+
+    .feature-description {
+      margin-top: 20px;
+      line-height: 1.6;
+      font-size: 1rem;
+    }
+
+    h2.section-title {
+      text-align: center;
+      margin-top: 80px;
+      color: #00bcd4;
+    }
+
+    h1 {
+      text-align: center;
+      padding: 40px;
+      font-size: 2rem; /* Fixed from text-size */
+      color: #020909;
+    }
+
+    .product-img img {
+      max-width: 400px;
+      height: auto;
+      border-radius: 10px;
+      /* Removed width: 650px; and height:700; */
+      position: relative;
+      top: 50px;
+    }
+
+    .image-container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 50px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 80px;
+    }
+
+    .row {
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+      opacity: 0;
+      transition: all 0.8s ease;
+    }
+
+    .img-box {
+      flex: 1;
+      transition: transform 1s ease, opacity 1s ease;
+    }
+
+    .img-box img {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 15px 40px rgba(0, 255, 255, 0.3);
+    }
+
+    .left {
+      transform: translateX(-150px);
+      opacity: 0;
+    }
+
+    .right {
+      transform: translateX(150px);
+      opacity: 0;
+    }
+
+    .row.visible .left,
+    .row.visible .right {
+      transform: translateX(0);
+      opacity: 1;
+    }
+
+    .row.visible {
+      opacity: 1;
+    }
+
+    .row.vanish .left {
+      transform: translateX(-200px);
+      opacity: 0;
+    }
+
+    .row.vanish .right {
+      transform: translateX(200px);
+      opacity: 0;
+    }
+
+    @media (max-width: 768px) {
+      .row {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Product Section -->
+  <div class="container">
+    <div class="product-img">
+      <img src="assets\headphone1.png" alt="Rockerz Headphone" />
+    </div>
+    <div class="product-details">
+      <h1>Rockerz 425W</h1>
+      <div class="tagline">WIRED HEADSET</div>
+      <p class="features">25 hours playtime / 40mm drivers / Beast Mode / ENx Tech & Dual Pairing</p>
+      <div class="price">Just @ ₹1,099</div>
+      <div class="feature-description">
+        <strong>Sound Quality:</strong> rich bass, crisp highs, studio-quality sound.<br />
+        <strong>Connectivity:</strong> wired 3.5mm jack.<br />
+        <strong>Battery Life:</strong> 25 hours of playtime on a single charge.<br />
+        <strong>Comfort:</strong> lightweight design, ergonomic earcups, memory foam cushions.<br />
+        <strong>Noise Cancellation:</strong> active & passive isolation.<br />
+        <strong>Microphone:</strong> clear voice capture, inline controls.<br />
+        <strong>Extras:</strong> foldable, water-resistant, multi-device pairing.
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll Image Reveal Section -->
+  <h1>Features</h1>
+
+  <div class="image-container">
+    <div class="row">
+      <div class="img-box left"><img src="https://picsum.photos/id/1011/500/300" alt="img1"></div>
+      <div class="img-box right"><img src="https://picsum.photos/id/1012/500/300" alt="img2"></div>
+    </div>
+    <div class="row">
+      <div class="img-box left"><img src="https://picsum.photos/id/1013/500/300" alt="img3"></div>
+      <div class="img-box right"><img src="https://picsum.photos/id/1015/500/300" alt="img4"></div>
+    </div>
+    <div class="row">
+      <div class="img-box left"><img src="https://picsum.photos/id/1016/500/300" alt="img5"></div>
+      <div class="img-box right"><img src="https://picsum.photos/id/1020/500/300" alt="img6"></div>
+    </div>
+  </div>
+
+  <script>
+    const rows = document.querySelectorAll('.row');
+    let lastScrollY = window.scrollY;
+
+    window.addEventListener('scroll', () => {
+      const currentScrollY = window.scrollY;
+      const scrollingDown = currentScrollY > lastScrollY;
+      lastScrollY = currentScrollY;
+
+      rows.forEach((row, index) => {
+        const rect = row.getBoundingClientRect();
+
+        // Show on scroll down
+        if (scrollingDown && rect.top < window.innerHeight - 100) {
+          row.classList.add('visible');
+          row.classList.remove('vanish');
+        }
+
+        // Hide on scroll up (except first row)
+        if (!scrollingDown && rect.top > window.innerHeight / 1.5 && index > 0) {
+          row.classList.remove('visible');
+          row.classList.add('vanish');
+        }
+
+        // Optional: Reset vanished rows if far out of view
+        if (rect.top > window.innerHeight) {
+          row.classList.remove('visible', 'vanish');
+        }
+      });
+    });
+
+    window.addEventListener('load', () => {
+      lastScrollY = window.scrollY;
+    });
+  </script>
+
+</body>
+</html>

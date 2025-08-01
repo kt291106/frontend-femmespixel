@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Scroll Reveal with Outward Vanish</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #111;
+      font-family: Arial, sans-serif;
+      color: white;
+    }
+
+    h1 {
+      text-align: center;
+      padding: 40px;
+      color: #00ffff;
+    }
+
+    .image-container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 50px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 80px;
+    }
+
+    .row {
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+      opacity: 0;
+      transition: all 0.8s ease;
+    }
+
+    .img-box {
+      flex: 1;
+      transition: transform 1s ease, opacity 1s ease;
+    }
+
+    .img-box img {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 15px 40px rgba(0, 255, 255, 0.3);
+    }
+
+    .left {
+      transform: translateX(-150px);
+      opacity: 0;
+    }
+
+    .right {
+      transform: translateX(150px);
+      opacity: 0;
+    }
+
+    .row.visible .left,
+    .row.visible .right {
+      transform: translateX(0);
+      opacity: 1;
+    }
+
+    .row.visible {
+      opacity: 1;
+    }
+
+    .row.vanish .left {
+      transform: translateX(-200px);
+      opacity: 0;
+    }
+
+    .row.vanish .right {
+      transform: translateX(200px);
+      opacity: 0;
+    }
+
+    @media (max-width: 768px) {
+      .row {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Scroll to Animate Rows</h1>
+
+  <div class="image-container">
+    <div class="row">
+      <div class="img-box left"><img src="https://picsum.photos/id/1011/500/300" alt="img1"></div>
+      <div class="img-box right"><img src="https://picsum.photos/id/1012/500/300" alt="img2"></div>
+    </div>
+    <div class="row">
+      <div class="img-box left"><img src="https://picsum.photos/id/1013/500/300" alt="img3"></div>
+      <div class="img-box right"><img src="https://picsum.photos/id/1015/500/300" alt="img4"></div>
+    </div>
+    <div class="row">
+      <div class="img-box left"><img src="https://picsum.photos/id/1016/500/300" alt="img5"></div>
+      <div class="img-box right"><img src="https://picsum.photos/id/1020/500/300" alt="img6"></div>
+    </div>
+  </div>
+
+  <script>
+    const rows = document.querySelectorAll('.row');
+    let lastScrollY = window.scrollY;
+
+    window.addEventListener('scroll', () => {
+      const currentScrollY = window.scrollY;
+      const scrollingDown = currentScrollY > lastScrollY;
+      lastScrollY = currentScrollY;
+
+      rows.forEach((row, index) => {
+        const rect = row.getBoundingClientRect();
+
+        // Show on scroll down
+        if (scrollingDown && rect.top < window.innerHeight - 100) {
+          row.classList.add('visible');
+          row.classList.remove('vanish');
+        }
+
+        // Hide on scroll up (except first row)
+        if (!scrollingDown && rect.top > window.innerHeight / 1.5 && index > 0) {
+          row.classList.remove('visible');
+          row.classList.add('vanish');
+        }
+
+        // Optional: Reset vanished rows if far out of view
+        if (rect.top > window.innerHeight) {
+          row.classList.remove('visible', 'vanish');
+        }
+      });
+    });
+
+    window.addEventListener('load', () => {
+      lastScrollY = window.scrollY;
+    });
+  </script>
+
+</body>
+</html>

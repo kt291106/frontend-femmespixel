@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mouseover Animation</title>
+  <style>
+    #hoverText {
+      font-size: 2rem;
+      color: #333;
+      transition: transform 0.2s ease, color 0.1s ease;
+      text-align: center;
+    }
+
+    .animate {
+      transform: scale(1.3);
+      color: #e91e63;
+    }
+  </style>
+</head>
+<body>
+
+  <h1 id="hoverText" onmouseover="addEffect()" onmouseout="removeEffect()">WELCOME TO OUR WEBPAGE</h1>
+
+  <script>
+    function addEffect() {
+      document.getElementById("hoverText").classList.add("animate");
+    }
+
+    function removeEffect() {
+      document.getElementById("hoverText").classList.remove("animate");
+    }
+  </script>
+
+</body>
+</html>

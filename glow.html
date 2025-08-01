@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Glowing Hover Text</title>
+  <style>
+    body {
+      background-color: #bee2f7;
+      color: white;
+      text-align: center;
+      margin-top: 100px;
+      font-family: Arial, sans-serif;
+    }
+
+    #hoverText {
+      font-size: 2.5rem;
+      color: rgb(10, 10, 10);
+      transition: all 0.5s ease;
+    }
+
+    .glow {
+      text-shadow: 0 0 5px #e550f3,
+                   0 0 10px #e550f3,
+                   0 0 20px #e550f3,
+                   0 0 30px #e550f3;
+      color: #e550f3;
+    }
+  </style>
+</head>
+<body>
+
+  <h1 id="hoverText" onmouseover="addGlow()" onmouseout="removeGlow()">WELCOME TO OUR PAGE</h1>
+
+  <script>
+    function addGlow() {
+      document.getElementById("hoverText").classList.add("glow");
+    }
+
+    function removeGlow() {
+      document.getElementById("hoverText").classList.remove("glow");
+    }
+  </script>
+
+</body>
+</html>

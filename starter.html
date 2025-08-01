@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Neon Loading Page</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #2e2e2e;
+      font-family: 'Arial', sans-serif;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    .neon-text {
+      font-size: 2.5rem;
+      font-style: italic;
+      color: transparent;
+      -webkit-text-stroke: 1.5px #00ffff;
+      text-shadow:
+        0 0 5px #00ffff,
+        0 0 10px #00ffff,
+        0 0 20px #00ffff,
+        0 0 30px #00ffff;
+      animation: jumpTilt 2s infinite ease-in-out;
+      margin: 10px 0;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .final-message {
+      font-size: 2rem;
+      font-style: italic;
+      color: transparent;
+      -webkit-text-stroke: 1.5px #5faff5;
+      text-shadow:
+        0 0 5px #0a66b6,
+        0 0 10px #0a66b6,
+        0 0 20px #0a66b6,
+        0 0 40px #ff00ff;
+      opacity: 0;
+      animation: fadeIn 2s ease forwards;
+    }
+
+    @keyframes jumpTilt {
+      0%, 100% {
+        transform: translateY(0) rotate(0deg);
+      }
+      25% {
+        transform: translateY(-10px) rotate(-5deg);
+      }
+      50% {
+        transform: translateY(0px) rotate(5deg);
+      }
+      75% {
+        transform: translateY(-5px) rotate(-3deg);
+      }
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container" id="loadingSection">
+    <div class="neon-text">Wait for a moment...</div>
+    <div class="neon-text">Your webpage is loading</div>
+  </div>
+
+  <div class="container hidden" id="finalSection">
+    <div class="final-message">
+      Successfully your code has been loaded. Enjoy your shopping!
+    </div>
+  </div>
+
+  <script>
+    // Wait 5 seconds, then show final message
+    setTimeout(() => {
+      document.getElementById('loadingSection').style.display = 'none';
+      document.getElementById('finalSection').classList.remove('hidden');
+    }, 5000); // 5 seconds
+  </script>
+<br><br><br>
+</body>
+</html>

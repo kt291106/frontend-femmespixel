@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Headphone Store</title>
+  <style>
+    /* your existing styles remain unchanged */
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #ff6e7f, #bfe9ff);
+    }
+
+    /* Top Taskbar */
+    .taskbar {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      padding: 12px 20px;
+      background-color: #003366;
+      color: white;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+      z-index: 100;
+    }
+
+    .taskbar nav a {
+      margin-left: 20px;
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 60px 20px;
+      background: url('hero-headphones.jpg') no-repeat center center/cover;
+      color: white;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 18px;
+    }
+
+    /* Developer List Section */
+    .developer-list {
+      margin: 50px auto 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .dev-item {
+      position: relative;
+      background-color: #0077ff;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 18px;
+      transition: background-color 0.3s;
+      width: 200px;
+      text-align: center;
+    }
+
+    .dev-item:hover {
+      background-color: #005fcc;
+    }
+
+    .dev-item img {
+  display: none;
+  margin-top: 10px;
+  width: 100%;
+  border-radius: 10px;
+  border: 2px solid #333;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.dev-item:hover img {
+  display: block;
+}
+
+    /* Featured Products Section */
+    .products {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      padding: 40px 20px;
+    }
+
+    .product-card {
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      width: 220px;
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.3s;
+    }
+
+    .product-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .product-card img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .product-card h3 {
+      margin: 10px 0 5px;
+      font-size: 18px;
+    }
+
+    .product-card p {
+      font-size: 14px;
+      color: #444;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #003366;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Taskbar -->
+  <div class="taskbar">
+    <div>🎧 HeadZone</div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Products</a>
+      <a href="#">Support</a>
+      <a href="#">Contact</a>
+    </nav>
+  </div>
+
+  <!-- Hero Section -->
+  <div class="hero">
+    <h1>Feel the Sound</h1>
+    <p>Experience premium audio quality with our latest headphones.</p>
+  </div>
+
+  <!-- Product Cards -->
+  <div class="products">
+    <div class="product-card">
+      <img src="product1.jpg" alt="Headphone 1" />
+      <h3>ProBass X1</h3>
+      <p>Deep bass & clear treble</p>
+    </div>
+    <div class="product-card">
+      <img src="product2.jpg" alt="Headphone 2" />
+      <h3>Studio HD</h3>
+      <p>Built for studio professionals</p>
+    </div>
+    <div class="product-card">
+      <img src="product3.jpg" alt="Headphone 3" />
+      <h3>NoiseBlocker 360</h3>
+      <p>Active noise cancellation</p>
+    </div>
+  </div>
+
+  <!-- Developer List with Hover Popups (Moved below products) -->
+  <div class="developer-list">
+    <div class="dev-item">
+      Developer 1
+      <img src="https://static.vecteezy.com/system/resources/previews/026/794/674/original/confident-young-businessman-in-suit-standing-free-photo.jpg" alt="Dev 1" />
+    </div>
+    <div class="dev-item">
+      Developer 2
+      <img src="https://i.pinimg.com/736x/2a/7d/4c/2a7d4c4bc1381a476b8b8a85885ac392.jpg" alt="Dev 2" />
+    </div>
+    <div class="dev-item">
+      Developer 3
+      <img src="https://imgcdn.stablediffusionweb.com/2024/11/6/8708a5a1-2092-49ef-bb2b-d8c9567f3595.jpg" alt="Dev 3" />
+    </div>
+    <div class="dev-item">
+      Developer 4
+      <img src="https://tse3.mm.bing.net/th/id/OIP.oDPGq31VbxVemW3ZzciSUAHaHa?w=626&h=626&rs=1&pid=ImgDetMain&o=7&rm=3.jpg" alt="Dev 4" />
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2025 HeadZone Audio. All rights reserved. | Contact: support@headzone.com
+  </footer>
+
+</body>
+</html>
