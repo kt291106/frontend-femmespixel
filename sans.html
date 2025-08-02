@@ -45,8 +45,8 @@
       opacity: 1;
       transform: translateY(-50%) scale(1);
     }
-    * {
-      box-sizing: border-box;
+    .dev-item:hover img {
+      display: block;
     }
 
     body {
@@ -409,8 +409,8 @@
       const rect = hero.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
-      ripple.style.left = `${x - 20}px`;
-      ripple.style.top = `${y - 20}px`;
+      ripple.style.left = ${x - 20}px;
+      ripple.style.top = ${y - 20}px;
       ripple.style.width = ripple.style.height = '50px';
       hero.appendChild(ripple);
       ripple.addEventListener('animationend', () => {
