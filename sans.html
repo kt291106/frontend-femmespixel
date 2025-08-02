@@ -45,8 +45,8 @@
       opacity: 1;
       transform: translateY(-50%) scale(1);
     }
-    .dev-item:hover img {
-      display: block;
+    * {
+      box-sizing: border-box;
     }
 
     body {
@@ -329,38 +329,38 @@
   <!-- Scrolling Carousel -->
   <div class="carousel-wrapper">
     <div class="carousel-track">
-      <a href="hdphn2.html" class="product-card" aria-label="View details for ProBass X1">
+      <a href="pages/headphone1.html" class="product-card" aria-label="View details for ProBass X1">
         <img src="assets/headphone1.png" alt="Headphone 1">
         <h3>ProBass X1 <span class="external-link-icon" title="Opens product detail page">&#8599;</span></h3>
         <p>Deep bass & clear treble</p>
       </a>
-      <a href="hdphn.html" class="product-card" aria-label="View details for Studio HD">
+      <a href="pages/hdphn2.html" class="product-card" aria-label="View details for Studio HD">
         <img src="assets/hdphn2.jpg" alt="Headphone 2">
         <h3>Studio HD <span class="external-link-icon" title="Opens product detail page">&#8599;</span></h3>
         <p>Built for studio professionals</p>
       </a>
-      <a href="hdphn3.html" class="product-card" aria-label="View details for NoiseBlocker 360">
+      <a href="pages/hdphn3.html" class="product-card" aria-label="View details for NoiseBlocker 360">
         <img src="assets/hdphn3.jpg" alt="Headphone 3">
         <h3>NoiseBlocker 360 <span class="external-link-icon" title="Opens product detail page">&#8599;</span></h3>
         <p>Active noise cancellation</p>
       </a>
-      <a href="hdphn4.html" class="product-card" aria-label="View details for ThunderBeat">
+      <a href="pages/hdphn4.html" class="product-card" aria-label="View details for ThunderBeat">
         <img src="assets/hdphn4.jpg" alt="Headphone 4">
         <h3>ThunderBeat <span class="external-link-icon" title="Opens product detail page">&#8599;</span></h3>
         <p>Long battery life</p>
       </a>
-      <a href="hdphn5.html" class="product-card" aria-label="View details for BassMaster">
+      <a href="pages/hdphn5.html" class="product-card" aria-label="View details for BassMaster">
         <img src="assets/hdphn5.jpg" alt="Headphone 5">
         <h3>BassMaster <span class="external-link-icon" title="Opens product detail page">&#8599;</span></h3>
         <p>Rich bass and clarity</p>
       </a>
       <!-- Repeat cards for seamless loop -->
-      <a href="hdphn1.html" class="product-card" aria-label="View details for ProBass X1">
+      <a href="pages/hdphn1.html" class="product-card" aria-label="View details for ProBass X1">
         <img src="assets/hdph1.jpeg" alt="Headphone 1">
         <h3>ProBass X1 <span class="external-link-icon" title="Opens product detail page">&#8599;</span></h3>
         <p>Deep bass & clear treble</p>
       </a>
-      <a href="hdphn1.html" class="product-card" aria-label="View details for Studio HD">
+      <a href="pages/hdphn1.html" class="product-card" aria-label="View details for Studio HD">
         <img src="assets/hdphn3.jpg" alt="Headphone 2">
         <h3>Studio HD <span class="external-link-icon" title="Opens product detail page">&#8599;</span></h3>
         <p>Built for studio professionals</p>
@@ -409,8 +409,8 @@
       const rect = hero.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
-      ripple.style.left = ${x - 20}px;
-      ripple.style.top = ${y - 20}px;
+      ripple.style.left = `${x - 20}px`;
+      ripple.style.top = `${y - 20}px`;
       ripple.style.width = ripple.style.height = '50px';
       hero.appendChild(ripple);
       ripple.addEventListener('animationend', () => {

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Order Page</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #0a2956 0%, #19a0e6 100%);
+      font-family: 'Segoe UI', Arial, sans-serif;
+      color: #222;
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .main-flex {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 48px;
+      width: 100vw;
+      max-width: 1200px;
+      padding: 48px 0;
+    }
+
+    .box {
+      width: 410px;
+      min-width: 280px;
+      max-width: 500px;
+      padding: 32px 36px;
+      margin: 0;
+      border-radius: 18px;
+      background: rgba(255, 228, 243, 0.97);
+      box-shadow: 0 8px 32px 0 rgba(80, 80, 120, 0.18), 0 1.5px 8px 0 #ffb6d5;
+      border: none;
+    }
+
+    .white-box {
+      border: 2.5px solid #ffb6d5;
+    }
+
+    .red-box {
+      border: 2.5px solid #ff69b4;
+    }
+
+    h2 {
+      margin-top: 0;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #d72660;
+      letter-spacing: 1px;
+      margin-bottom: 18px;
+      text-shadow: 0 2px 8px #ffe4f3;
+    }
+
+    .box p, .box label {
+      font-size: 1.1em;
+      margin: 10px 0;
+      color: #333;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      border-radius: 8px;
+      border: 1.5px solid #ffb6d5;
+      outline: none;
+      font-size: 1em;
+      background: #fff;
+      color: #222;
+      box-sizing: border-box;
+      transition: border 0.2s;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      border: 1.5px solid #d72660;
+      background: #fff0fa;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 60px;
+      max-height: 180px;
+    }
+
+    .btn {
+      background: linear-gradient(90deg, #ff69b4 0%, #d72660 100%);
+      color: white;
+      padding: 14px 0;
+      margin-top: 22px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 1.1em;
+      width: 100%;
+      box-shadow: 0 2px 8px 0 #ffb6d5;
+      transition: background 0.2s, box-shadow 0.2s;
+      letter-spacing: 1px;
+    }
+
+    .btn:hover {
+      background: linear-gradient(90deg, #d72660 0%, #ff69b4 100%);
+      box-shadow: 0 4px 16px 0 #ff69b4;
+    }
+
+    .success {
+      color: #1db954;
+      font-size: 1.5em;
+      margin-top: 30px;
+      display: none;
+      text-align: center;
+      background: rgba(255,255,255,0.85);
+      border-radius: 10px;
+      padding: 18px 0;
+      box-shadow: 0 2px 12px 0 #b6d0e2;
+      width: 350px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    label {
+      display: block;
+      margin-top: 18px;
+      font-size: 1.08em;
+    }
+
+    .inline-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 10px;
+      font-size: 1em;
+    }
+
+    input[type="radio"] {
+      accent-color: #d72660;
+      width: 18px;
+      height: 18px;
+      margin: 0 8px 0 0;
+    }
+
+    @media (max-width: 900px) {
+      .main-flex {
+        flex-direction: column;
+        align-items: center;
+        gap: 28px;
+        padding: 24px 0;
+      }
+      .box {
+        width: 95vw;
+        max-width: 98vw;
+        padding: 20px 10px;
+      }
+      .success {
+        width: 90vw;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="main-flex">
+    <!-- Order Summary Box -->
+    <div class="box white-box">
+      <h2>Order Summary</h2>
+      <p><strong>Product:</strong> Wireless Headphones</p>
+      <p><strong>Brand:</strong> SoundMagic</p>
+      <p><strong>Color:</strong> Black</p>
+      <p><strong>Price:</strong> ₹1,499</p>
+      <p><strong>Quantity:</strong> 1</p>
+      <hr style="margin:18px 0;">
+      <p><strong>Subtotal:</strong> ₹1,499</p>
+      <p><strong>Shipping:</strong> Free</p>
+      <p><strong>Total:</strong> <span style="color:#d72660; font-size:1.2em;">₹1,499</span></p>
+    </div>
+
+    <!-- User Details Box -->
+    <div class="box red-box">
+      <h2>Shipping & Payment Details</h2>
+      <form id="orderForm" onsubmit="placeOrder(event)">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" placeholder="Enter your full name" required>
+
+        <label for="phone">Mobile Number</label>
+        <input type="tel" id="phone" placeholder="Enter your mobile number" pattern="[0-9]{10}" maxlength="10" required>
+
+        <label for="email">Email Address</label>
+        <input type="email" id="email" placeholder="Enter your email" required>
+
+        <label for="address">Delivery Address</label>
+        <textarea id="address" placeholder="Enter your address" rows="3" required></textarea>
+
+        <label for="pincode">Pincode</label>
+        <input type="text" id="pincode" placeholder="Enter your area pincode" pattern="[0-9]{6}" maxlength="6" required>
+
+        <label for="city">City</label>
+        <input type="text" id="city" placeholder="Enter your city" required>
+
+        <label for="state">State</label>
+        <input type="text" id="state" placeholder="Enter your state" required>
+
+        <label>Payment Method</label>
+        <div class="inline-label">
+          <input type="radio" id="cod" name="payment" checked>
+          <label for="cod" style="margin:0;">Cash on Delivery</label>
+        </div>
+        <div class="inline-label">
+          <input type="radio" id="upi" name="payment">
+          <label for="upi" style="margin:0;">UPI</label>
+        </div>
+        <div class="inline-label">
+          <input type="radio" id="card" name="payment">
+          <label for="card" style="margin:0;">Credit/Debit Card</label>
+        </div>
+
+        <button class="btn" type="submit">Place Order</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Order Placed Message -->
+ <div class="success" id="successMsg">
+    <button id="closeBtn" style="
+      position: absolute;
+      top: 18px;
+      right: 24px;
+      background: #ff69b4;
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      font-size: 1.2em;
+      cursor: pointer;
+      box-shadow: 0 2px 8px #ffb6d5;
+      transition: background 0.2s;
+    " title="Close">&times;</button>
+    <div style="margin-top: 16px;">
+      Order has been placed 🎉<br>
+      Thank you for shopping with us!
+    </div>
+
+   <script>
+    function placeOrder(event) {
+      event.preventDefault();
+      const msg = document.getElementById("successMsg");
+      msg.style.display = "block";
+      msg.style.position = "fixed";
+      msg.style.top = "50%";
+      msg.style.left = "50%";
+      msg.style.transform = "translate(-50%, -50%)";
+      msg.style.zIndex = "9999";
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    document.getElementById("closeBtn").onclick = function() {
+      window.location.href = "shop.html";
+    };
+  </script>
+
+</body>
+</html>
